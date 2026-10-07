@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build -- --base=/davomat-tizimi/ && node -e \"const f=require('fs');f.copyFileSync('dist/index.html','dist/404.html');f.writeFileSync('dist/.nojekyll','')\" && gh-pages -d dist --dotfiles -m \"Deploy demo\""
   },
   "dependencies": {
     "lucide-react": "^0.460.0",
@@ -22,9 +23,11 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.3",
     "vite": "^5.4.11"
-  }
+  },
+  "homepage": "https://fayzullayev-dev.github.io/davomat-tizimi/"
 }

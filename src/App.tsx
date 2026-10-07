@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { useAuth } from './context/AuthContext';
 import type { Permission } from './utils/permissions';
@@ -22,11 +22,17 @@ function RequirePerm({ perm, children }: { perm: Permission; children: ReactNode
   return can(perm) ? <>{children}</> : <ForbiddenPage />;
 }
 
-export default function App() {
+function LoginRoute() {
   const { user } = useAuth();
+  const from = (useLocation().state as { from?: string } | null)?.from;
+  // Kirgandan so'ng foydalanuvchi ochmoqchi bo'lgan sahifaga qaytariladi
+  return user ? <Navigate to={from && from !== '/kirish' ? from : '/'} replace /> : <LoginPage />;
+}
+
+export default function App() {
   return (
     <Routes>
-      <Route path="/kirish" element={user ? <Navigate to="/" replace /> : <LoginPage />} />
+      <Route path="/kirish" element={<LoginRoute />} />
       <Route element={<AppLayout />}>
         <Route index element={<DashboardPage />} />
         <Route path="oqituvchilar-davomati" element={<TeacherAttendancePage />} />
