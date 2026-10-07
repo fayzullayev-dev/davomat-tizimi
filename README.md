@@ -2,6 +2,8 @@
 
 A web dashboard that tracks the daily attendance of **teachers and students** at a university campus, using entry/exit events from **Hikvision face & card turnstiles**. It was built for a university campus in Surxondaryo, Uzbekistan, and the whole interface is in **Uzbek (Latin script)**.
 
+**🔗 Live demo:** https://fayzullayev-dev.github.io/davomat-tizimi/ — log in with `direktor` / `direktor123` (or `superadmin` / `admin123`)
+
 > **Status:** the frontend is complete and runs on realistic mock data. The backend that receives the turnstile events is the next stage of the project.
 
 ![Dashboard — light theme](docs/screenshots/dashboard-light.png)
@@ -97,6 +99,7 @@ Other commands:
 ```bash
 npm run build      # type-check + production build into dist/
 npm run preview    # serve the production build
+npm run deploy     # publish the demo to GitHub Pages
 ```
 
 A step-by-step guide in Russian is in [ZAPUSK.md](ZAPUSK.md).
